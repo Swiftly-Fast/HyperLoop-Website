@@ -11,8 +11,9 @@
             align-items: center;
             justify-content: center;
             margin: 0;
-            background: linear-gradient(to bottom, #4a148c, #ffffff);
             font-family: Arial, sans-serif;
+            transition: background 0.5s;
+            background: linear-gradient(to bottom, #4a148c, #ffffff);
         }
 
         .navbar {
@@ -227,8 +228,8 @@
         }
 
         .colorful-text-block:hover {
-            transform: scale(1.1);
-            background-color: #3498db;
+            transform: scale(1.05);
+            background: linear-gradient(45deg, #00c9ff, #92fe9d, #00c9ff);
         }
 
         @keyframes colorChange {
@@ -236,9 +237,57 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
+        .toggle-switch {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .toggle-switch input {
+            display: none;
+        }
+
+        .slider {
+            width: 60px;
+            height: 34px;
+            position: relative;
+            background-color: #ccc;
+            border-radius: 34px;
+            cursor: pointer;
+            transition: background-color 0.4s;
+        }
+
+        .slider:before {
+            content: "";
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.4s;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
     </style>
 </head>
 <body>
+    <div class="toggle-switch">
+        <label>
+            <input type="checkbox" id="themeToggle">
+            <span class="slider"></span>
+        </label>
+    </div>
     <div class="navbar">
         <div class="dropdown">
             <button class="dropbtn">Pages</button>
@@ -269,10 +318,21 @@
             </a>
         </div>
     </div>
-    <div class="scrolling-text">HyperLoop LTD where games are not games, they are our lives</div>
+    <div class="scrolling-text">HyperLoop LTD where games are not games, they're our lives</div>
     <div class="colorful-text-block">
-        HyperLoop LTD was founded by Swiftly. and ever since then the company has just kept growing and growing. HyperLoop makes games not for the money but for the fun and joy. All our games have hours of thought put into them before the game is put into practice to ensure the best gameplay for all users. Many of our games are about exploring, but we also love to mix other genres with it. Like our latest game being made, Ether Rift, has a horror and exploring aspect. This allows a larger variety of players to play our games.
+        HyperLoop LTD was founded by Swiftly. and ever since then the company has just kept growing and growing. HyperLoop makes games not for the money but for the fun and joy. All our games have hours of thought put into them before the game is put into practice to ensure the best gameplay for all users.
+        Many of our games are about exploring. But we also love to mix other genres with it. Like our latest game being made Ether Rift has a horror and exploring aspect. This allows a larger variety of players to play our games.
     </div>
-    <div class="footer">HyperLoop LTD copyrighted and founded by Swiftly Fast. Made in 2024. Any Games by the company is copyrighted too</div>
+    <div class="footer">HyperLoop LTD copyrighted and founded by Swiftly Fast. Made in 2024. Any Games by the company are copyrighted too</div>
+
+    <script>
+        document.getElementById('themeToggle').addEventListener('change', function() {
+            if (this.checked) {
+                document.body.style.background = 'linear-gradient(to bottom, #ffffff, #001f3f)';
+            } else {
+                document.body.style.background = 'linear-gradient(to bottom, #4a148c, #ffffff)';
+            }
+        });
+    </script>
 </body>
 </html>
